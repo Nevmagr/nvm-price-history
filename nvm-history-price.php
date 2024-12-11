@@ -187,7 +187,7 @@ class Price_History {
 		echo '<ul>';
 		foreach ( array_reverse( $price_history ) as $entry ) {
 			echo '<li>';
-			echo esc_html( date( 'd m Y H:i', strtotime( $entry['date'] ) ) );
+			echo esc_html( date( 'd/m/Y H:i', strtotime( $entry['date'] ) ) );
 			echo ' - ' . '<strong>' . wc_price( $entry['sale_price'] ) . '</strong>';
 			echo '</li>';
 		}
