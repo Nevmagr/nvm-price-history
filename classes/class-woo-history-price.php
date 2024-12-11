@@ -73,6 +73,17 @@ class Woo_History_Price extends \WC_Product {
 		$product->save_meta_data();
 	}
 
+	/**
+	 * Handles the price history for a variable product.
+	 *
+	 * This function processes each child product of the given variable product,
+	 * updates their price history, and calculates the minimum price among them.
+	 * It then updates the price history and minimum price for the variable product.
+	 *
+	 * @param WC_Product_Variable $product The variable product object.
+	 *
+	 * @return void
+	 */
 	private function handle_variable_product( $product ) {
 		$children      = $product->get_children();
 		$min_price     = [];
@@ -107,6 +118,14 @@ class Woo_History_Price extends \WC_Product {
 		$product->save_meta_data();
 	}
 
+	/**
+	 * Keeps track of price history entries for the last 100 days.
+	 *
+	 * This function filters out any entries in the price history array that are older than 100 days.
+	 *
+	 * @param array $price_history An array of price history entries, where each entry is an associative array containing a 'date' key.
+	 * @return array The filtered price history array containing only entries from the last 100 days.
+	 */
 	public function keep_track_100_days( $price_history ) {
 
 		// Get the timestamp for 100 days ago
@@ -165,11 +184,28 @@ class Woo_History_Price extends \WC_Product {
 		return $min_price;
 	}
 
+	/**
+	 * Retrieves the minimum price of the product over the last 30 days.
+	 *
+	 * @param WC_Product $product The WooCommerce product object.
+	 * @return string The minimum price of the product over the last 30 days.
+	 */
 	public function get_price_min_30( $product ) {
 		$min_price = $product->get_meta( '_nvm_min_price_30' );
 
 		return $min_price;
+	}
 
+	/**
+	 * Retrieves the price history of a given product.
+	 *
+	 * @param WC_Product $product The product object.
+	 * @return mixed The price history of the product.
+	 */
+	public function get_history_price( $product ) {
+		$price_history = $product->get_meta( '_nvm_price_history' );
+
+		return $price_history;
 	}
 }
 
