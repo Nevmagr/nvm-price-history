@@ -19,6 +19,8 @@
  */
 namespace Nvm;
 
+use Nvm\Price_history\Woo_History_Price as History_Price;
+
 /**
  * Check that the file is not accessed directly.
  */
@@ -108,7 +110,7 @@ class Price_History {
 		add_action( 'before_woocommerce_init', array( $this, 'declare_hpos_compatibility' ) );
 		add_shortcode( 'nvm_donation_form', array( $this, 'render_donation_form' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 20 );
-		add_action( 'save_post_product', array( $this, 'track_price_changes'), 10, 3 );
+		add_action( 'save_post_product', array( '\\Nvm\\Price_History', 'track_price_changes'), 10, 3 );
 		// add_action( 'add_meta_boxes', array( $this, 'nvm_add_price_history_metabox') );
 	}
 
