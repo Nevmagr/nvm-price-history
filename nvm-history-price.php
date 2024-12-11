@@ -111,7 +111,7 @@ class Price_History {
 		add_shortcode( 'nvm_donation_form', array( $this, 'render_donation_form' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 20 );
 		add_action( 'save_post_product', array( $this, 'update_price'), 10, 3 );
-		add_action( 'add_meta_boxes', array( $this, 'display_price_history_metabox') );
+		add_action( 'add_meta_boxes', array( $this, 'price_history_metabox') );
 	}
 
 	/**
@@ -158,6 +158,20 @@ class Price_History {
 		$update = new Woo_Price();
 		$update->track_price_changes( $post_id, $post, $update );
 
+	}
+
+	/**
+	 * Adds a metabox to the product edit screen.
+	 */
+	public function price_history_metabox() {
+		add_meta_box(
+			'price_history_metabox',
+			__( 'Price History', 'nevma' ),
+			array( '\\Nvm\\Price_History', 'display_price_history_metabox' ),
+			'product',
+			'normal',
+			'high'
+		);
 	}
 
 	public function declare_hpos_compatibility() {
