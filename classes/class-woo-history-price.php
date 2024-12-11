@@ -93,7 +93,9 @@ class Woo_History_Price extends \WC_Product {
 	}
 
 	public function keep_track_100_days( $price_history ) {
-		$min_price = null;
+	error_log('$price_history :');
+	error_log(print_r($price_history , true));
+
 		$today = strtotime( date( 'Y-m-d' ) );
 		$one_hundred_days_ago = strtotime( '-100 days', $today );
 
