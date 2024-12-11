@@ -61,7 +61,6 @@ class Woo_History_Price extends \WC_Product {
 		];
 
 		$price_history = $this->keep_track_100_days( $price_history );
-
 		$product->update_meta_data( '_nvm_price_history', $price_history );
 
 		$min_price = $this->get_min_price_gr( $price_history );
