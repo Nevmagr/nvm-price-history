@@ -78,6 +78,10 @@ class Woo_History_Price extends \WC_Product {
 		$min_price     = [];
 		$price_history = $product->get_meta( '_nvm_price_history' );
 
+		if ( ! is_array( $price_history ) ) {
+			$price_history = []; // Ensure it's an array
+		}
+
 		foreach ( $children as $child_id ) {
 			$child = wc_get_product( $child_id );
 			if ( ! $child || ! $child->is_in_stock() ) {
