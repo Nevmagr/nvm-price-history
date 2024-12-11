@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Class Admin_Menu.
  */
-class Woo_History_Price extends \WC_Product {
+class Woo_Prices_Changes extends \WC_Product {
 
 	public function track_price_changes( $post_id, $post, $update ) {
 

@@ -19,7 +19,7 @@
  */
 namespace Nvm;
 
-use Nvm\Price_history\Woo_History_Price as History_Price;
+use Nvm\Price_History as Price_History;
 
 /**
  * Check that the file is not accessed directly.
