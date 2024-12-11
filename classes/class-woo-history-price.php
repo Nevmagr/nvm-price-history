@@ -121,7 +121,7 @@ class Woo_History_Price extends \WC_Product {
 
 		foreach ( $price_history as $entry ) {
 			$entry_date = strtotime( $entry['date'] );
-			if ( $entry_date < $thirty_days_ago ) {
+			if ( $entry_date > $thirty_days_ago ) {
 				continue;
 			}
 
