@@ -43,8 +43,5 @@ class Woo_History_Price {
 		}
 		return true;
 	}
-
-
-
 }
 
