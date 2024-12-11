@@ -135,6 +135,11 @@ class Woo_History_Price extends \WC_Product {
 				continue;
 			}
 
+			if ( $min_price === null ) {
+				$min_price = $entry['sale_price'];
+				continue;
+			}
+
 			// Compare and update the minimum sale price
 			if ( $entry['sale_price'] < $min_price ) {
 				$min_price = $entry['sale_price'];
