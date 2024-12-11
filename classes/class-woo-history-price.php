@@ -32,13 +32,22 @@ class Woo_History_Price extends \WC_Product {
 			return;
 		}
 		// if product is simple
-		if ( $product->get_type() !== 'simple' ) {
-			return;
+		if ( $product->get_type() === 'simple' ) {
+			$regular_price = $product->get_regular_price();
+			$sale_price    = $product->get_price();
+			$price_history = $product->get_meta( '_nvm_price_history' );
 		}
 
-		$regular_price = $product->get_regular_price();
-		$sale_price    = $product->get_price();
-		$price_history = $product->get_meta( '_nvm_price_history' );
+		// if product is variable
+		// if ( $product->get_type() === 'variable' ) {
+		// 	$children = $product->get_children();
+		// 	foreach ( $children as $child_id ) {
+		// 		$child = wc_get_product( $child_id );
+
+		// 		$this->record_price_change( $child );
+		// 	}
+		// }
+
 
 		if ( ! is_array( $price_history ) ) {
 			$price_history = [];
