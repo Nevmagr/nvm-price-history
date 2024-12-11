@@ -19,7 +19,7 @@
  */
 namespace Nvm;
 
-use Nvm\History_Price\Woo_History_Price as Woo_Price;
+use Nvm\Price_History\Woo_History_Price as Woo_Price;
 
 /**
  * Check that the file is not accessed directly.
@@ -70,7 +70,7 @@ class Price_History {
 	/**
 	 * The plugin instance.
 	 *
-	 * @var null|Donation $instance
+	 * @var null|Price_History $instance
 	 */
 	private static $instance = null;
 
