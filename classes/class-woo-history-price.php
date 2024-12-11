@@ -31,6 +31,10 @@ class Woo_History_Price extends \WC_Product {
 		if ( ! $product ) {
 			return;
 		}
+		// if product is simple
+		if ( $product->get_type() !== 'simple' ) {
+			return;
+		}
 
 		$regular_price = $product->get_regular_price();
 		$sale_price    = $product->get_price();
