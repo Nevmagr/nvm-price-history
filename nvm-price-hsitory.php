@@ -151,45 +151,45 @@ class Price_History {
 		}
 	}
 
-    /**
-     * Check plugin dependencies.
-     *
-     * Verifies if WooCommerce is active without relying on the folder structure.
-     */
-    public static function check_plugin_dependencies() {
-        // Check if the WooCommerce class exists.
-        if ( ! class_exists( 'WooCommerce' ) ) {
-            // Display an admin error message and terminate the script.
-            wp_die(
-                esc_html__( 'Sorry, but this plugin requires the WooCommerce plugin to be active.', 'your-text-domain' ) .
-                ' <a href="' . esc_url( admin_url( 'plugins.php' ) ) . '">' .
-                esc_html__( 'Return to Plugins.', 'your-text-domain' ) . '</a>'
-            );
-        }
-    }
+	/**
+	 * Check plugin dependencies.
+	 *
+	 * Verifies if WooCommerce is active without relying on the folder structure.
+	 */
+	public static function check_plugin_dependencies() {
+		// Check if the WooCommerce class exists.
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			// Display an admin error message and terminate the script.
+			wp_die(
+				esc_html__( 'Sorry, but this plugin requires the WooCommerce plugin to be active.', 'your-text-domain' ) .
+				' <a href="' . esc_url( admin_url( 'plugins.php' ) ) . '">' .
+				esc_html__( 'Return to Plugins.', 'your-text-domain' ) . '</a>'
+			);
+		}
+	}
 
-    public function enqueue_assets() {
-        wp_enqueue_style( 'nvm-history-style', self::$plugin_url . 'assets/css/style.css', array(), self::$plugin_version );
-    }
+	public function enqueue_assets() {
+		wp_enqueue_style( 'nvm-history-style', self::$plugin_url . 'assets/css/style.css', array(), self::$plugin_version );
+	}
 
-    public function render_donation_form() {
-        ob_start();
-        ?>
+	public function render_donation_form() {
+		ob_start();
+		?>
 
-        <?php
-        return ob_get_clean();
-    }
+		<?php
+		return ob_get_clean();
+	}
 
 
-    public function handle_donation_submission() {
-        if ( isset( $_POST['donation_amount'] ) && is_numeric( $_POST['donation_amount'] ) ) {
-            $donation_amount = (float) wc_clean( wp_unslash( $_POST['donation_amount'] ) );
+	public function handle_donation_submission() {
+		if ( isset( $_POST['donation_amount'] ) && is_numeric( $_POST['donation_amount'] ) ) {
+			$donation_amount = (float) wc_clean( wp_unslash( $_POST['donation_amount'] ) );
 
-            if ( $donation_amount > 0 ) {
-                WC()->cart->add_fee( __( 'Donation', 'nevma' ), $donation_amount );
-            }
-        }
-    }
+			if ( $donation_amount > 0 ) {
+				WC()->cart->add_fee( __( 'Donation', 'nevma' ), $donation_amount );
+			}
+		}
+	}
 
     /**
      * Runs on plugin activation.
