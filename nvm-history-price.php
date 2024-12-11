@@ -114,7 +114,11 @@ class Price_History {
 		// add_action( 'add_meta_boxes', array( $this, 'nvm_add_price_history_metabox') );
 	}
 
-	public function update_price(){
+	public function update_price( $post_id, $post, $update ){
+
+		$update = new Woo_Prices_Changes();
+		$update->track_price_changes( $post_id, $post, $update );
+
 		error_log('update_price');
 		return ;
 	}
@@ -196,9 +200,9 @@ class Price_History {
 		}
 	}
 
-    /**
-     * Runs on plugin activation.
-     */
+	/**
+	 * Runs on plugin activation.
+	 */
 	public static function on_plugin_activation() {
 
 		self::check_plugin_dependencies();
