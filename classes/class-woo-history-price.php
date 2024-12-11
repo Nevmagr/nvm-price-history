@@ -93,15 +93,17 @@ class Woo_History_Price extends \WC_Product {
 	}
 
 	public function keep_track_100_days( $price_history ) {
-	error_log('$price_history :');
-	error_log(print_r($price_history , true));
 
-		$today = strtotime( date( 'Y-m-d' ) );
-		$one_hundred_days_ago = strtotime( '-100 days', $today );
+		// Get the timestamp for 100 days ago
+		$one_hundred_days_ago = strtotime( '-100 days' );
 
-		foreach ( $price_history as $id =>$entry ) {
+		// Loop through the price history array
+		foreach ( $price_history as $id => $entry ) {
+			// Convert the entry's date to a timestamp
 			$entry_date = strtotime( $entry['date'] );
-			if ( $entry_date > $one_hundred_days_ago ) {
+
+			// Check if the entry date is older than 100 days
+			if ( $entry_date < $one_hundred_days_ago ) {
 				unset( $price_history[ $id ] );
 			}
 		}
