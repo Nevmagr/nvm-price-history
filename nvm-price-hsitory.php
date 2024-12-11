@@ -156,7 +156,7 @@ class Price_History {
      *
      * Verifies if WooCommerce is active without relying on the folder structure.
      */
-    public static function nvm_check_plugin_dependencies() {
+    public static function check_plugin_dependencies() {
         // Check if the WooCommerce class exists.
         if ( ! class_exists( 'WooCommerce' ) ) {
             // Display an admin error message and terminate the script.
