@@ -58,7 +58,32 @@ class Woo_History_Price extends \WC_Product {
 
 		// Save updated history.
 		$product->update_meta_data( '_nvm_price_history', $price_history );
+
+		// save the minimun price from the last 30 days
+		$min_price = $this->get_min_price( $price_history );
+		$product->update_meta_data( '_nvm_min_price', $min_price );
+
+
 		$product->save_meta_data();
+	}
+
+	public function get_min_price( $price_history ) {
+		$min_price = null;
+		$today = strtotime( date( 'Y-m-d' ) );
+		$thirty_days_ago = strtotime( '-30 days', $today );
+
+		foreach ( $price_history as $entry ) {
+			$entry_date = strtotime( $entry['date'] );
+			if ( $entry_date < $thirty_days_ago ) {
+				continue;
+			}
+
+			if ( $min_price === null || $entry['sale_price'] < $min_price ) {
+				$min_price = $entry['sale_price'];
+			}
+		}
+
+		return $min_price;
 	}
 
 	function display_price_history_metabox( ) {
