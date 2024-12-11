@@ -106,10 +106,7 @@ class Price_History {
 		self::autoload();
 
 		// Scripts & Styles.
-		// add_action( 'admin_enqueue_scripts', array( $this, 'styles_and_scripts' ) );
 		add_action( 'before_woocommerce_init', array( $this, 'declare_hpos_compatibility' ) );
-		add_shortcode( 'nvm_donation_form', array( $this, 'render_donation_form' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 20 );
 		add_action( 'save_post_product', array( $this, 'update_price'), 10, 3 );
 		add_action( 'add_meta_boxes', array( $this, 'price_history_metabox') );
 	}
@@ -167,7 +164,7 @@ class Price_History {
 		add_meta_box(
 			'price_history_metabox',
 			__( 'Price History', 'nevma' ),
-			array( '\\Woo_Price', 'display_price_history_metabox' ),
+			array( 'Woo_Price', 'display_price_history_metabox' ),
 			'product',
 			'normal',
 			'high'
@@ -178,7 +175,6 @@ class Price_History {
 
 		if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
 			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
-
 		}
 	}
 
@@ -194,25 +190,9 @@ class Price_History {
 			wp_die(
 				esc_html__( 'Sorry, but this plugin requires the WooCommerce plugin to be active.', 'your-text-domain' ) .
 				' <a href="' . esc_url( admin_url( 'plugins.php' ) ) . '">' .
-				esc_html__( 'Return to Plugins.', 'your-text-domain' ) . '</a>'
+				esc_html__( 'Return to Plugins.', 'nevma' ) . '</a>'
 			);
 		}
-	}
-
-	public function enqueue_assets() {
-		wp_enqueue_style( 'nvm-history-style', self::$plugin_url . 'assets/css/style.css', array(), self::$plugin_version );
-	}
-
-	public function render_donation_form() {
-		ob_start();
-		?>
-
-		<?php
-		return ob_get_clean();
-	}
-
-
-	public function handle_donation_submission() {
 	}
 
 	/**
@@ -222,8 +202,6 @@ class Price_History {
 
 		self::check_plugin_dependencies();
 	}
-
-
 
 	/**
 	 * Runs on plugin deactivation.
