@@ -102,8 +102,6 @@ class Price_History {
 
 		// Autoload.
 		self::autoload();
-		// load autohelpers functions
-		require_once self::$plugin_dir . 'helpers.php';
 
 		// Scripts & Styles.
 		// add_action( 'admin_enqueue_scripts', array( $this, 'styles_and_scripts' ) );
