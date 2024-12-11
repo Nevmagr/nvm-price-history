@@ -39,10 +39,10 @@ class Woo_History_Price extends \WC_Product {
 	}
 
 	private function handle_simple_product( $product ) {
-		$this->handel_single_product( $product );
+		$this->handle_single_product( $product );
 	}
 
-	private function handel_single_product( $product ) {
+	private function handle_single_product( $product ) {
 		$regular_price = $product->get_regular_price();
 		$sale_price    = $product->get_price();
 		$price_history = $product->get_meta( '_nvm_price_history' );
@@ -84,15 +84,9 @@ class Woo_History_Price extends \WC_Product {
 				continue;
 			}
 
-			$this->handel_single_product( $child );
-		}
+			$this->handle_single_product( $child );
 
-		if ( ! empty( $all_prices ) ) {
-			$total_minimum = min( $all_prices );
 		}
-
-		$product->update_meta_data( '_nvm_min_price_30', $total_minimum );
-		$product->save_meta_data();
 	}
 
 	public function keep_track_100_days( $price_history ) {
