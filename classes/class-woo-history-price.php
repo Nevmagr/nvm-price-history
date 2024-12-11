@@ -3,7 +3,7 @@
 /**
  * Set namespace.
  */
-namespace Nvm\History_Price;
+namespace Nvm\Woo_Prices_Changes;
 
 /**
  * Check that the file is not accessed directly.
