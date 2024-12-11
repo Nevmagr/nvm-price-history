@@ -56,6 +56,9 @@ class Woo_History_Price extends \WC_Product {
 			'date'          => current_time( 'mysql' ),
 		];
 
+		// keep the lowest price per day and only for 60 days
+		$price_history = $this->keep_track_100_days( $price_history );
+
 		// Save updated history.
 		$product->update_meta_data( '_nvm_price_history', $price_history );
 
@@ -65,6 +68,32 @@ class Woo_History_Price extends \WC_Product {
 
 		$product->save_meta_data();
 	}
+
+	public function keep_track_100_days( $price_history ) {
+		$min_price = null;
+		$today = strtotime( date( 'Y-m-d' ) );
+		$one_hundred_days_ago = strtotime( '-100 days', $today );
+
+		foreach ( $price_history as $entry ) {
+			$entry_date = strtotime( $entry['date'] );
+			if ( $entry_date < $one_hundred_days_ago ) {
+				continue;
+			}
+
+			if ( $min_price === null || $entry['sale_price'] < $min_price ) {
+				$min_price = $entry['sale_price'];
+			}
+		}
+
+		return $min_price;
+	}
+
+	/**
+	 * Keep only the lowest price per day and only for 60 days.
+	 *
+	 * @param array $price_history The price history.
+	 * @return array
+	 */
 
 	public function get_min_price_gr( $price_history ) {
 		$min_price = null;
@@ -85,7 +114,7 @@ class Woo_History_Price extends \WC_Product {
 		return $min_price;
 	}
 
-	function display_price_history_metabox( ) {
+	function display_price_history_metabox() {
 		global $product;
 
 		$price_history = $product->get_meta( '_nvm_price_history' );
