@@ -112,28 +112,36 @@ class Woo_History_Price extends \WC_Product {
 	}
 
 	/**
-	 * Keep only the lowest price per day and only for 60 days.
+	 * Keep only the lowest sale price from the last 30 days.
 	 *
 	 * @param array $price_history The price history.
-	 * @return array
+	 * @return float|null The lowest sale price in the last 30 days, or null if no valid prices exist.
 	 */
-
 	public function get_min_price_gr( $price_history ) {
 		$min_price = null;
-		$today = strtotime( date( 'Y-m-d' ) );
-		$thirty_days_ago = strtotime( '-30 days', $today );
+		$thirty_days_ago = strtotime( '-30 days' );
 
 		foreach ( $price_history as $entry ) {
+			// Parse entry date
 			$entry_date = strtotime( $entry['date'] );
-			if ( $entry_date > $thirty_days_ago ) {
+
+			// Skip entries older than 30 days
+			if ( $entry_date < $thirty_days_ago ) {
 				continue;
 			}
 
-			if ( $min_price === null || $entry['sale_price'] < $min_price ) {
+			// Skip entries with no sale price or empty sale price
+			if ( ! isset( $entry['sale_price'] ) || empty( $entry['sale_price']) ) {
+				continue;
+			}
+
+			// Compare and update the minimum sale price
+			if ( $entry['sale_price'] < $min_price ) {
 				$min_price = $entry['sale_price'];
 			}
 		}
 
+		// Return the minimum price found or null if no entries match the criteria
 		return $min_price;
 	}
 
