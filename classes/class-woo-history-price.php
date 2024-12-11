@@ -63,7 +63,6 @@ class Woo_History_Price extends \WC_Product {
 		$min_price = $this->get_min_price_gr( $price_history );
 		$product->update_meta_data( '_nvm_min_price_30', $min_price );
 
-
 		$product->save_meta_data();
 	}
 
