@@ -161,10 +161,13 @@ class Price_History {
 	 * Adds a metabox to the product edit screen.
 	 */
 	public function price_history_metabox() {
+
+		$view = new Woo_Price();
+
 		add_meta_box(
 			'price_history_metabox',
 			__( 'Price History', 'nevma' ),
-			array( 'Woo_Price', 'display_price_history_metabox' ),
+			$view->display_price_history_metabox(),
 			'product',
 			'normal',
 			'high'
