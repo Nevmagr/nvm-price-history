@@ -134,9 +134,6 @@ class Price_History {
 				$file           = self::$plugin_dir . 'classes/class-' . $file . '.php';
 
 				if ( file_exists( $file ) ) {
-
-					error_log( $file );
-
 					require $file;
 				}
 
