@@ -167,7 +167,7 @@ class Price_History {
 		add_meta_box(
 			'price_history_metabox',
 			__( 'Price History', 'nevma' ),
-			array( '\\Nvm\\Price_History', 'display_price_history_metabox' ),
+			array( '\\Woo_Price', 'display_price_history_metabox' ),
 			'product',
 			'normal',
 			'high'
