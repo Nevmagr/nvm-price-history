@@ -110,10 +110,13 @@ class Price_History {
 		add_action( 'before_woocommerce_init', array( $this, 'declare_hpos_compatibility' ) );
 		add_shortcode( 'nvm_donation_form', array( $this, 'render_donation_form' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 20 );
-		add_action( 'save_post_product', array( '\\Nvm\\History_Price', 'track_price_changes'), 10, 3 );
+		add_action( 'save_post_product', array( '\\History_Price', 'update_price'), 10, 3 );
 		// add_action( 'add_meta_boxes', array( $this, 'nvm_add_price_history_metabox') );
 	}
 
+	public function update_price(){
+		return ;
+	}
 	/**
 	 * Autoload.
 	 */
