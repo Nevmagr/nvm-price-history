@@ -19,7 +19,7 @@
  */
 namespace Nvm;
 
-use Nvm\History_Price\Woo_Prices_Changes as Woo_Prices_Changes;
+use Nvm\History_Price\Woo_Prices_Changes as Woo_Price;
 
 /**
  * Check that the file is not accessed directly.
@@ -116,7 +116,7 @@ class Price_History {
 
 	public function update_price( $post_id, $post, $update ){
 
-		$update = new Woo_Prices_Changes();
+		$update = new Woo_Price();
 		$update->track_price_changes( $post_id, $post, $update );
 
 		error_log('update_price');
