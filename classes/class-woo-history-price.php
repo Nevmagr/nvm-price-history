@@ -60,14 +60,14 @@ class Woo_History_Price extends \WC_Product {
 		$product->update_meta_data( '_nvm_price_history', $price_history );
 
 		// save the minimun price from the last 30 days
-		$min_price = $this->get_min_price( $price_history );
+		$min_price = $this->get_min_price_gr( $price_history );
 		$product->update_meta_data( '_nvm_min_price_30', $min_price );
 
 
 		$product->save_meta_data();
 	}
 
-	public function get_min_price( $price_history ) {
+	public function get_min_price_gr( $price_history ) {
 		$min_price = null;
 		$today = strtotime( date( 'Y-m-d' ) );
 		$thirty_days_ago = strtotime( '-30 days', $today );
