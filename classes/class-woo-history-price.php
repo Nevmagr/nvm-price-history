@@ -152,7 +152,7 @@ class Woo_History_Price extends \WC_Product {
 		return $min_price;
 	}
 
-	function display_price_history_metabox() {
+	public function display_price_history_metabox() {
 		global $product;
 
 		$price_history = $product->get_meta( '_nvm_price_history' );
