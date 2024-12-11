@@ -27,8 +27,8 @@ class Woo_History_Price extends \WC_Product {
 			return;
 		}
 
-		// Handle Simple Products
-		if ( $product->get_type() === 'simple' ) {
+		// Handle Simple Products, external products, grouped products, etc.
+		if ( $product->get_type() !== 'variable' ) {
 			$this->handle_simple_product( $product );
 		}
 
