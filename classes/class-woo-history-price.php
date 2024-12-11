@@ -57,7 +57,8 @@ class Woo_History_Price extends \WC_Product {
 		];
 
 		// Save updated history.
-		update_post_meta( $post_id, '_nvm_price_history', $price_history );
+		$product->update_meta_data( '_nvm_price_history', $price_history );
+		$product->save_meta_data();
 	}
 
 	function display_price_history_metabox( ) {
