@@ -168,7 +168,7 @@ class Price_History {
 			array( $this, 'display_price_history_metabox' ),
 			'product',
 			'side',
-			'normal'
+			'default'
 		);
 	}
 
