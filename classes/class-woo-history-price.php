@@ -75,8 +75,7 @@ class Woo_History_Price extends \WC_Product {
 
 	private function handle_variable_product( $product ) {
 		$children      = $product->get_children();
-		$all_prices    = [];
-		$total_minimum = PHP_FLOAT_MAX;
+		$min_price = [];
 
 		foreach ( $children as $child_id ) {
 			$child = wc_get_product( $child_id );
@@ -86,7 +85,11 @@ class Woo_History_Price extends \WC_Product {
 
 			$this->handle_single_product( $child );
 
+			$min_price[] = $product->get_meta( '_nvm_price_history' );
 		}
+
+		$min_price = $this->get_min_price_gr( $min_price );
+		$product->update_meta_data( '_nvm_min_price_30', $min_price );
 	}
 
 	public function keep_track_100_days( $price_history ) {
@@ -97,15 +100,11 @@ class Woo_History_Price extends \WC_Product {
 		foreach ( $price_history as $entry ) {
 			$entry_date = strtotime( $entry['date'] );
 			if ( $entry_date < $one_hundred_days_ago ) {
-				continue;
-			}
-
-			if ( $min_price === null || $entry['sale_price'] < $min_price ) {
-				$min_price = $entry['sale_price'];
+				unset( $price_history[ $entry_date ] );
 			}
 		}
 
-		return $min_price;
+		return $price_history;
 	}
 
 	/**
