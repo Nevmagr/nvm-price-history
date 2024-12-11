@@ -39,6 +39,10 @@ class Woo_History_Price extends \WC_Product {
 	}
 
 	private function handle_simple_product( $product ) {
+		$this->handel_single_product( $product );
+	}
+
+	private function handel_single_product( $product ) {
 		$regular_price = $product->get_regular_price();
 		$sale_price    = $product->get_price();
 		$price_history = $product->get_meta( '_nvm_price_history' );
@@ -80,32 +84,7 @@ class Woo_History_Price extends \WC_Product {
 				continue;
 			}
 
-			$regular_price = $child->get_regular_price();
-			$sale_price    = $child->get_price();
-			$price_history = $child->get_meta( '_nvm_price_history' );
-
-			if ( ! is_array( $price_history ) ) {
-				$price_history = [];
-			}
-
-			$last_entry = end( $price_history );
-			$last_price = $last_entry ? $last_entry['sale_price'] : null;
-
-			if ( $last_price === null || floatval( $last_price ) !== floatval( $sale_price ) ) {
-				$price_history[] = [
-					'regular_price' => $regular_price,
-					'sale_price'    => $sale_price,
-					'date'          => current_time( 'mysql' ),
-				];
-
-				$price_history = $this->keep_track_100_days( $price_history );
-				$child->update_meta_data( '_nvm_price_history', $price_history );
-			}
-
-			$child_min_price = $this->get_min_price_gr( $price_history );
-			$all_prices[]    = $child_min_price;
-
-			$child->save_meta_data();
+			$this->handel_single_product( $child );
 		}
 
 		if ( ! empty( $all_prices ) ) {
