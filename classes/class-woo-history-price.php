@@ -97,10 +97,10 @@ class Woo_History_Price extends \WC_Product {
 		$today = strtotime( date( 'Y-m-d' ) );
 		$one_hundred_days_ago = strtotime( '-100 days', $today );
 
-		foreach ( $price_history as $entry ) {
+		foreach ( $price_history as $id =>$entry ) {
 			$entry_date = strtotime( $entry['date'] );
-			if ( $entry_date < $one_hundred_days_ago ) {
-				unset( $price_history[ $entry_date ] );
+			if ( $entry_date > $one_hundred_days_ago ) {
+				unset( $price_history[ $id ] );
 			}
 		}
 
