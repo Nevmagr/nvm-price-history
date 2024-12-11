@@ -151,25 +151,5 @@ class Woo_History_Price extends \WC_Product {
 		// Return the minimum price found or null if no entries match the criteria
 		return $min_price;
 	}
-
-	public function display_price_history_metabox() {
-		global $post;
-		$product = wc_get_product( $post->ID );
-		$price_history = $product->get_meta( '_nvm_price_history' );
-
-		if ( ! is_array( $price_history ) || empty( $price_history ) ) {
-			// echo '<p>' . __( 'No price changes recorded.', 'nvm-product-price-history-inline' ) . '</p>';
-			return;
-		}
-
-		echo '<ul>';
-		foreach ( array_reverse( $price_history ) as $entry ) {
-			echo '<li>';
-			echo '<strong>' . wc_price( $entry['price'] ) . '</strong>';
-			echo ' - ' . esc_html( date( 'd M Y H:i', strtotime( $entry['date'] ) ) );
-			echo '</li>';
-		}
-		echo '</ul>';
-	}
 }
 

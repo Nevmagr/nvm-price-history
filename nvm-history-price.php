@@ -162,16 +162,34 @@ class Price_History {
 	 */
 	public function price_history_metabox() {
 
-		$view = new Woo_Price();
-
 		add_meta_box(
 			'price_history_metabox',
 			__( 'Price History', 'nevma' ),
-			$view->display_price_history_metabox(),
+			array( $this, 'display_price_history_metabox' ),
 			'product',
 			'normal',
 			'high'
 		);
+	}
+
+	public function display_price_history_metabox() {
+		global $post;
+		$product = wc_get_product( $post->ID );
+		$price_history = $product->get_meta( '_nvm_price_history' );
+
+		if ( ! is_array( $price_history ) || empty( $price_history ) ) {
+			// echo '<p>' . __( 'No price changes recorded.', 'nvm-product-price-history-inline' ) . '</p>';
+			return;
+		}
+
+		echo '<ul>';
+		foreach ( array_reverse( $price_history ) as $entry ) {
+			echo '<li>';
+			echo '<strong>' . wc_price( $entry['price'] ) . '</strong>';
+			echo ' - ' . esc_html( date( 'd M Y H:i', strtotime( $entry['date'] ) ) );
+			echo '</li>';
+		}
+		echo '</ul>';
 	}
 
 	public function declare_hpos_compatibility() {
