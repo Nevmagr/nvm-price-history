@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Woo_History_Price extends \WC_Product {
 
-	public function track_price_changes_inline( $post_id, $post, $update ) {
+	public function track_price_changes( $post_id, $post, $update ) {
 
 		if ( wp_is_post_revision( $post_id ) ) {
 			return;
