@@ -92,7 +92,7 @@ class Price_History {
 		self::$plugin_version = '0.0.1';
 
 		// Set the plugin namespace.
-		self::$namespace_prefix = 'Nvm\\Donation';
+		self::$namespace_prefix = 'Nvm\\Price_History';
 
 		// Set the plugin directory.
 		self::$plugin_dir = wp_normalize_path( plugin_dir_path( __FILE__ ) );
@@ -169,7 +169,7 @@ class Price_History {
     }
 
     public function enqueue_assets() {
-        wp_enqueue_style( 'nvm-donation-style', self::$plugin_url . 'assets/css/style.css', array(), self::$plugin_version );
+        wp_enqueue_style( 'nvm-history-style', self::$plugin_url . 'assets/css/style.css', array(), self::$plugin_version );
     }
 
     public function render_donation_form() {
@@ -220,20 +220,20 @@ class Price_History {
 /**
  * Activation Hook.
  */
-register_activation_hook( __FILE__, array( '\\Nvm\\Donation', 'on_plugin_activation' ) );
+register_activation_hook( __FILE__, array( '\\Nvm\\Price_History', 'on_plugin_activation' ) );
 
 /**
  * Dectivation Hook.
  */
-register_deactivation_hook( __FILE__, array( '\\Nvm\\Donation', 'on_plugin_deactivation' ) );
+register_deactivation_hook( __FILE__, array( '\\Nvm\\Price_History', 'on_plugin_deactivation' ) );
 
 
 /**
  * Uninstall Hook.
  */
-register_uninstall_hook( __FILE__, array( '\\Nvm\\Donation', 'on_plugin_uninstall' ) );
+register_uninstall_hook( __FILE__, array( '\\Nvm\\Price_History', 'on_plugin_uninstall' ) );
 
 /**
  * Load plugin.
  */
-add_action( 'plugins_loaded', array( '\\Nvm\\Donation', 'get_instance' ) );
+add_action( 'plugins_loaded', array( '\\Nvm\\Price_History', 'get_instance' ) );
