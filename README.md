@@ -1,4 +1,4 @@
-# WooCommerce Price History Tracker
+# WooCommerce Price History Tracker by Nevma
 
 A lightweight WooCommerce plugin to track and manage price changes for products over time. This plugin records regular and sale prices, provides a 100-day price history, and tracks the minimum price in the last 30 days.
 
