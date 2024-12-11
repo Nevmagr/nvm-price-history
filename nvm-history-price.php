@@ -167,8 +167,8 @@ class Price_History {
 			__( 'Price History', 'nevma' ),
 			array( $this, 'display_price_history_metabox' ),
 			'product',
-			'normal',
-			'high'
+			'side',
+			'normal'
 		);
 	}
 
