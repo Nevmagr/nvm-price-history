@@ -164,5 +164,12 @@ class Woo_History_Price extends \WC_Product {
 		// Return the minimum price found or null if no entries match the criteria
 		return $min_price;
 	}
+
+	public function get_price_min_30( $product ) {
+		$min_price = $product->get_meta( '_nvm_min_price_30' );
+
+		return $min_price;
+
+	}
 }
 
