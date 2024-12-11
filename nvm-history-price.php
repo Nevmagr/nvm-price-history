@@ -114,15 +114,6 @@ class Price_History {
 		// add_action( 'add_meta_boxes', array( $this, 'nvm_add_price_history_metabox') );
 	}
 
-	public function update_price( $post_id, $post, $update ){
-
-		$update = new Woo_Price();
-		$update->track_price_changes( $post_id, $post, $update );
-
-		error_log('update_price');
-		return ;
-	}
-
 	/**
 	 * Autoload.
 	 */
@@ -153,6 +144,23 @@ class Price_History {
 				require self::$plugin_dir . '/prefixed/vendor/autoload.php';
 			}
 		);
+	}
+
+	/**
+	 * Updates the price of a given post.
+	 *
+	 * This function creates a new instance of the Woo_Price class and calls the
+	 * track_price_changes method to update the price of the specified post.
+	 *
+	 * @param int     $post_id The ID of the post to update.
+	 * @param WP_Post $post    The post object.
+	 * @param bool    $update  Whether this is an existing post being updated or not.
+	 */
+	public function update_price( $post_id, $post, $update ){
+
+		$update = new Woo_Price();
+		$update->track_price_changes( $post_id, $post, $update );
+
 	}
 
 	public function declare_hpos_compatibility() {
@@ -194,13 +202,6 @@ class Price_History {
 
 
 	public function handle_donation_submission() {
-		if ( isset( $_POST['donation_amount'] ) && is_numeric( $_POST['donation_amount'] ) ) {
-			$donation_amount = (float) wc_clean( wp_unslash( $_POST['donation_amount'] ) );
-
-			if ( $donation_amount > 0 ) {
-				WC()->cart->add_fee( __( 'Donation', 'nevma' ), $donation_amount );
-			}
-		}
 	}
 
 	/**
