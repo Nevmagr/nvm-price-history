@@ -29,5 +29,5 @@ You can use the provided functions to retrieve price history and minimum prices 
 
 1. **Retrieve Price History:**
    ```php
-   $price_history = $product->get_meta( '_nvm_price_history' );
+   $price_history = $product->get_price_min_30();
    ```
