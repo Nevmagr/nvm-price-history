@@ -27,7 +27,11 @@ The plugin automatically tracks price changes whenever a WooCommerce product is 
 
 You can use the provided functions to retrieve price history and minimum prices programmatically:
 
-1. **Retrieve Price History:**
+1. **Get minimun 30 day price:**
    ```php
-   $price_history = $product->get_price_min_30();
+   $product->get_price_min_30();
+   ```
+2. **Retrieve History of price:**
+   ```php
+   $product->get_history_price();
    ```
