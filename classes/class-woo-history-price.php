@@ -19,7 +19,7 @@ class Woo_History_Price extends \WC_Product {
 
 	public function track_price_changes( $post_id, $post, $update ) {
 		if ( wp_is_post_revision( $post_id ) || 'product' !== $post->post_type ) {
-		return;
+			return;
 		}
 
 		$product = wc_get_product( $post_id );
@@ -27,14 +27,20 @@ class Woo_History_Price extends \WC_Product {
 			return;
 		}
 
-		// Handle Simple Products, external products, grouped products, etc.
-		if ( $product->get_type() !== 'variable' ) {
-			$this->handle_simple_product( $product );
-		}
+		$this->process_product_price_data( $product );
+	}
 
-		// Handle Variable Products
+	/**
+	 * Processes the price data for a product and updates relevant metadata.
+	 *
+	 * @param WC_Product $product The WooCommerce product object.
+	 * @return void
+	 */
+	private function process_product_price_data( $product ) {
 		if ( $product->get_type() === 'variable' ) {
 			$this->handle_variable_product( $product );
+		} else {
+			$this->handle_simple_product( $product );
 		}
 	}
 
@@ -193,6 +199,16 @@ class Woo_History_Price extends \WC_Product {
 	public function get_price_min_30( $product ) {
 		$min_price = $product->get_meta( '_nvm_min_price_30' );
 
+		if ( ! $min_price ) {
+
+			if ( ! $product instanceof WC_Product ) {
+				return null; // Ensure the input is a valid product.
+			}
+
+			$this->process_product_price_data( $product );
+			$min_price = $product->get_meta( '_nvm_min_price_30' );
+		}
+
 		return $min_price;
 	}
 
@@ -204,6 +220,16 @@ class Woo_History_Price extends \WC_Product {
 	 */
 	public function get_history_price( $product ) {
 		$price_history = $product->get_meta( '_nvm_price_history' );
+
+		if ( empty( $price_history ) ) {
+
+			if ( ! $product instanceof WC_Product ) {
+				return null; // Ensure the input is a valid product.
+			}
+
+			$this->process_product_price_data( $product );
+			$price_history = $product->get_meta( '_nvm_price_history' );
+		}
 
 		return $price_history;
 	}
