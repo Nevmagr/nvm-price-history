@@ -17,8 +17,7 @@
 	"require-dev": {
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
 		"wp-coding-standards/wpcs": "^2.3",
-		"phpcompatibility/phpcompatibility-wp": "^2.1",
-		"analog/analog": "^1.0"
+		"phpcompatibility/phpcompatibility-wp": "^2.1"
 	},
 	"scripts": {
 		"compat": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
