@@ -24,5 +24,10 @@
 		"compat": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
 		"fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf",
 		"lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
 	}
 }

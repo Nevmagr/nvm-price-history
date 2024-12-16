@@ -1,8 +1,6 @@
-# Log files
-*.log
-
-# OS generated files
 /.DS_Store
-
-# htaccess
-/.htaccess
+/vendor
+/node_modules
+/build
+composer.lock
+package-lock.json
