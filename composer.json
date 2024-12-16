@@ -1,0 +1,28 @@
+{
+	"name": "nemva/history-price",
+	"description": "History Price on woo Products",
+	"type": "project",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=7.4"
+	},
+	"autoload": {
+		"psr-4": {
+			"Xkon\\Plugin_Tpl\\": "php"
+		},
+		"exclude-from-classmap": [
+			"vendor/dealerdirect"
+		]
+	},
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+		"wp-coding-standards/wpcs": "^2.3",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"analog/analog": "^1.0"
+	},
+	"scripts": {
+		"compat": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
+		"fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf",
+		"lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs"
+	}
+}
