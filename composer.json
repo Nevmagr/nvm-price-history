@@ -8,7 +8,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Xkon\\Plugin_Tpl\\": "php"
+			"Nvm\\Price_History\\": "classes"
 		},
 		"exclude-from-classmap": [
 			"vendor/dealerdirect"
