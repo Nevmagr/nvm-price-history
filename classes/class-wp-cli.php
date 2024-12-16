@@ -65,10 +65,5 @@ class Price_History_CLI extends WP_CLI_Command {
 
 			$min_price = $product->get_meta( '_nvm_min_price_30' );
 		}
-
     }
-
-
-
-
 }
