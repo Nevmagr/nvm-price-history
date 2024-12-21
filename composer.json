@@ -1,0 +1,16 @@
+{
+	"name": "Nevma/price-history",
+	"description": "price history",
+	"autoload": {
+		"psr-4": {
+			"Nvm\\Price_History\\": "classes/"
+		}
+	},
+	"authors": [
+		{
+			"name": "nevma.gr",
+			"email": "info@nevma.gr"
+		}
+	],
+	"require": {}
+}
