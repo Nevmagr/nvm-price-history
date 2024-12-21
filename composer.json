@@ -1,10 +1,18 @@
 {
-	"name": "Nvm/price-history",
+	"name": "nvm/price-history",
 	"description": "price history",
+	"type": "project",
+	"license": "GPL-2.0-or-later",
+	"require": {
+		"php": ">=7.4"
+	},
 	"autoload": {
 		"psr-4": {
-			"Nvm\\Price_History\\": "classes/"
-		}
+			"Nvm\\Price_History\\": "classes"
+		},
+		"exclude-from-classmap": [
+			"vendor/dealerdirect"
+		]
 	},
 	"authors": [
 		{
@@ -12,5 +20,20 @@
 			"email": "info@nevma.gr"
 		}
 	],
-	"require": {}
+	"require-dev": {
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+		"wp-coding-standards/wpcs": "^2.3",
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"analog/analog": "^1.0"
+	},
+	"scripts": {
+		"compat": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
+		"fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf",
+		"lint": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
 }
