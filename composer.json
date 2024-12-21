@@ -1,5 +1,5 @@
 {
-	"name": "nvm/price-history",
+	"name": "Nvm/price-history",
 	"description": "price history",
 	"autoload": {
 		"psr-4": {

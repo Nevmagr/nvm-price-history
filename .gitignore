@@ -1,8 +1,11 @@
 /.DS_Store
-/vendor
 /node_modules
 /build
-composer.lock
+/vendor
 composer.lock
 composer.phar
 .phpunit.result.cache
+
+# Εξαιρέσεις για το autoload
+!/vendor/autoload.php
+!/vendor/composer/autoload_*
