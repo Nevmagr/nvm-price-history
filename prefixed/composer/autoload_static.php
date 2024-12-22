@@ -7,10 +7,6 @@ namespace Composer\Autoload;
 class ComposerStaticInitd3fd88ad15ea72652c8970133682cfba
 {
     public static $prefixLengthsPsr4 = array (
-        'P' => 
-        array (
-            'Psr\\Log\\' => 8,
-        ),
         'N' => 
         array (
             'Nvm\\Price_History\\' => 18,
@@ -22,10 +18,6 @@ class ComposerStaticInitd3fd88ad15ea72652c8970133682cfba
     );
 
     public static $prefixDirsPsr4 = array (
-        'Psr\\Log\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/log/src',
-        ),
         'Nvm\\Price_History\\' => 
         array (
             0 => __DIR__ . '/../..' . '/classes',
@@ -36,56 +28,8 @@ class ComposerStaticInitd3fd88ad15ea72652c8970133682cfba
         ),
     );
 
-    public static $prefixesPsr0 = array (
-        'A' => 
-        array (
-            'Analog' => 
-            array (
-                0 => __DIR__ . '/..' . '/analog/analog/lib',
-            ),
-        ),
-    );
-
     public static $classMap = array (
-        'Analog\\Analog' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Analog.php',
-        'Analog\\Handler\\Amon' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/Amon.php',
-        'Analog\\Handler\\Apprise' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/Apprise.php',
-        'Analog\\Handler\\Buffer' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/Buffer.php',
-        'Analog\\Handler\\Buffer\\Destructor' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/Buffer/Destructor.php',
-        'Analog\\Handler\\ChromeLogger' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/ChromeLogger.php',
-        'Analog\\Handler\\EchoConsole' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/EchoConsole.php',
-        'Analog\\Handler\\File' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/File.php',
-        'Analog\\Handler\\FirePHP' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/FirePHP.php',
-        'Analog\\Handler\\GELF' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/GELF.php',
-        'Analog\\Handler\\IFTTT' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/IFTTT.php',
-        'Analog\\Handler\\Ignore' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/Ignore.php',
-        'Analog\\Handler\\LevelBuffer' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/LevelBuffer.php',
-        'Analog\\Handler\\LevelName' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/LevelName.php',
-        'Analog\\Handler\\Mail' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/Mail.php',
-        'Analog\\Handler\\Mongo' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/Mongo.php',
-        'Analog\\Handler\\Multi' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/Multi.php',
-        'Analog\\Handler\\Null' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/Null.php',
-        'Analog\\Handler\\PDO' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/PDO.php',
-        'Analog\\Handler\\Post' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/Post.php',
-        'Analog\\Handler\\Redis' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/Redis.php',
-        'Analog\\Handler\\Slackbot' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/Slackbot.php',
-        'Analog\\Handler\\Stderr' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/Stderr.php',
-        'Analog\\Handler\\Syslog' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/Syslog.php',
-        'Analog\\Handler\\Threshold' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/Threshold.php',
-        'Analog\\Handler\\Variable' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/Variable.php',
-        'Analog\\Handler\\WPMail' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Handler/WPMail.php',
-        'Analog\\Logger' => __DIR__ . '/..' . '/analog/analog/lib/Analog/Logger.php',
-        'ChromePhp' => __DIR__ . '/..' . '/analog/analog/lib/ChromePhp.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin' => __DIR__ . '/..' . '/dealerdirect/phpcodesniffer-composer-installer/src/Plugin.php',
-        'Psr\\Log\\AbstractLogger' => __DIR__ . '/..' . '/psr/log/src/AbstractLogger.php',
-        'Psr\\Log\\InvalidArgumentException' => __DIR__ . '/..' . '/psr/log/src/InvalidArgumentException.php',
-        'Psr\\Log\\LogLevel' => __DIR__ . '/..' . '/psr/log/src/LogLevel.php',
-        'Psr\\Log\\LoggerAwareInterface' => __DIR__ . '/..' . '/psr/log/src/LoggerAwareInterface.php',
-        'Psr\\Log\\LoggerAwareTrait' => __DIR__ . '/..' . '/psr/log/src/LoggerAwareTrait.php',
-        'Psr\\Log\\LoggerInterface' => __DIR__ . '/..' . '/psr/log/src/LoggerInterface.php',
-        'Psr\\Log\\LoggerTrait' => __DIR__ . '/..' . '/psr/log/src/LoggerTrait.php',
-        'Psr\\Log\\NullLogger' => __DIR__ . '/..' . '/psr/log/src/NullLogger.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -93,7 +37,6 @@ class ComposerStaticInitd3fd88ad15ea72652c8970133682cfba
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitd3fd88ad15ea72652c8970133682cfba::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitd3fd88ad15ea72652c8970133682cfba::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitd3fd88ad15ea72652c8970133682cfba::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitd3fd88ad15ea72652c8970133682cfba::$classMap;
 
         }, null, ClassLoader::class);

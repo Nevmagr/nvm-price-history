@@ -1,78 +1,6 @@
 {
     "packages": [
         {
-            "name": "analog/analog",
-            "version": "1.0.21-stable",
-            "version_normalized": "1.0.21.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jbroadway/analog.git",
-                "reference": "9ec168a8fcc42b0a27022e41e89e8e2bc6c127c2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jbroadway/analog/zipball/9ec168a8fcc42b0a27022e41e89e8e2bc6c127c2",
-                "reference": "9ec168a8fcc42b0a27022e41e89e8e2bc6c127c2",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "psr/log": "^3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^8.5"
-            },
-            "time": "2023-12-10T23:00:00+00:00",
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "psr-0": {
-                    "Analog": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Johnny Broadway",
-                    "email": "johnny@johnnybroadway.com",
-                    "homepage": "http://www.johnnybroadway.com/"
-                }
-            ],
-            "description": "Fast, flexible, easy PSR-3-compatible PHP logging package with dozens of handlers.",
-            "homepage": "https://github.com/jbroadway/analog",
-            "keywords": [
-                "PSR3",
-                "alerts",
-                "amon",
-                "apprise",
-                "chrome-logger",
-                "console",
-                "debug",
-                "debugging",
-                "error",
-                "errors",
-                "firephp",
-                "gelf",
-                "log",
-                "logger",
-                "logging",
-                "logs",
-                "monitor",
-                "monitoring",
-                "psr-3",
-                "stderr",
-                "syslog"
-            ],
-            "support": {
-                "issues": "https://github.com/jbroadway/analog/issues",
-                "source": "https://github.com/jbroadway/analog/tree/1.0.21-stable"
-            },
-            "install-path": "../analog/analog"
-        },
-        {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
             "version": "v0.7.2",
             "version_normalized": "0.7.2.0",
@@ -364,59 +292,6 @@
             "install-path": "../phpcompatibility/phpcompatibility-wp"
         },
         {
-            "name": "psr/log",
-            "version": "3.0.2",
-            "version_normalized": "3.0.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/log.git",
-                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
-                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.0.0"
-            },
-            "time": "2024-09-11T13:17:53+00:00",
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                }
-            },
-            "installation-source": "dist",
-            "autoload": {
-                "psr-4": {
-                    "Psr\\Log\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interface for logging libraries",
-            "homepage": "https://github.com/php-fig/log",
-            "keywords": [
-                "log",
-                "psr",
-                "psr-3"
-            ],
-            "support": {
-                "source": "https://github.com/php-fig/log/tree/3.0.2"
-            },
-            "install-path": "../psr/log"
-        },
-        {
             "name": "squizlabs/php_codesniffer",
             "version": "3.11.2",
             "version_normalized": "3.11.2.0",
@@ -500,6 +375,53 @@
             "install-path": "../squizlabs/php_codesniffer"
         },
         {
+            "name": "woocommerce/woocommerce-sniffs",
+            "version": "0.1.3",
+            "version_normalized": "0.1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/woocommerce/woocommerce-sniffs.git",
+                "reference": "4576d54595614d689bc4436acff8baaece3c5bb0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/woocommerce/woocommerce-sniffs/zipball/4576d54595614d689bc4436acff8baaece3c5bb0",
+                "reference": "4576d54595614d689bc4436acff8baaece3c5bb0",
+                "shasum": ""
+            },
+            "require": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+                "php": ">=7.0",
+                "phpcompatibility/phpcompatibility-wp": "^2.1.0",
+                "wp-coding-standards/wpcs": "^2.3.0"
+            },
+            "time": "2022-02-17T15:34:51+00:00",
+            "type": "phpcodesniffer-standard",
+            "installation-source": "dist",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Claudio Sanches",
+                    "email": "claudio@automattic.com"
+                }
+            ],
+            "description": "WooCommerce sniffs",
+            "keywords": [
+                "phpcs",
+                "standards",
+                "woocommerce",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/woocommerce/woocommerce-sniffs/issues",
+                "source": "https://github.com/woocommerce/woocommerce-sniffs/tree/0.1.3"
+            },
+            "install-path": "../woocommerce/woocommerce-sniffs"
+        },
+        {
             "name": "wp-coding-standards/wpcs",
             "version": "2.3.0",
             "version_normalized": "2.3.0.0",
@@ -556,13 +478,12 @@
     ],
     "dev": true,
     "dev-package-names": [
-        "analog/analog",
         "dealerdirect/phpcodesniffer-composer-installer",
         "phpcompatibility/php-compatibility",
         "phpcompatibility/phpcompatibility-paragonie",
         "phpcompatibility/phpcompatibility-wp",
-        "psr/log",
         "squizlabs/php_codesniffer",
+        "woocommerce/woocommerce-sniffs",
         "wp-coding-standards/wpcs"
     ]
 }

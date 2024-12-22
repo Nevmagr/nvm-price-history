@@ -14,7 +14,8 @@
 		"watch": "composer dumpautoload -o && grunt watch:all"
 	},
 	"devDependencies": {
-		"@wordpress/eslint-plugin": "^8.0.2",
+		"@woocommerce/eslint-plugin": "^2.3.0",
+		"@wordpress/eslint-plugin": "^22.0.0",
 		"@wordpress/stylelint-config": "^23.6.0",
 		"eslint": "^9.17.0",
 		"grunt": "^1.6.1",
