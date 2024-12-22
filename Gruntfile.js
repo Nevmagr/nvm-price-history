@@ -2,7 +2,7 @@ module.exports = function (grunt) {
 	var BUILD_DIR = "build/",
 		CSS_DIR = "css/",
 		PHP_DIR = "classes/",
-		VENDOR_DIR = "vendor/";
+		VENDOR_DIR = "prefixed/vendor/";
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON("package.json"),
@@ -83,11 +83,7 @@ module.exports = function (grunt) {
 	grunt.registerTask("copy:all", [
 		"clean:all",
 		"copy:plugin",
-		"copy:css",
-		"copy:js",
 		"copy:php",
-		"copy:analog",
-		"copy:psr",
 		"copy:autoload",
 		"copy:composer",
 	]);
