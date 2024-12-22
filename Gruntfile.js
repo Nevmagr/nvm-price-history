@@ -1,7 +1,6 @@
 module.exports = function (grunt) {
 	var BUILD_DIR = "build/",
 		CSS_DIR = "css/",
-		JS_DIR = "js/",
 		PHP_DIR = "classes/",
 		VENDOR_DIR = "vendor/";
 
@@ -15,12 +14,7 @@ module.exports = function (grunt) {
 				interval: 2000,
 			},
 			all: {
-				files: [
-					CSS_DIR + "**",
-					JS_DIR + "**",
-					PHP_DIR + "**",
-					"<%= pkg.name %>.php",
-				],
+				files: [CSS_DIR + "**", PHP_DIR + "**", "<%= pkg.name %>.php"],
 				tasks: ["clean:all", "copy:all"],
 				options: {
 					spawn: false,
@@ -37,12 +31,6 @@ module.exports = function (grunt) {
 				cwd: CSS_DIR,
 				src: "**",
 				dest: BUILD_DIR + "<%= pkg.name %>/" + CSS_DIR,
-			},
-			js: {
-				expand: true,
-				cwd: JS_DIR,
-				src: "**",
-				dest: BUILD_DIR + "<%= pkg.name %>/" + JS_DIR,
 			},
 			php: {
 				expand: true,

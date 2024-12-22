@@ -4,15 +4,11 @@
 	"description": "Woocommerce Price History",
 	"license": "GPL-2.0-or-later",
 	"scripts": {
-		"css:lint": "stylelint \"css/**/*.css\" || echo ---",
-		"css:fix": "stylelint \"css/**/*.css\" --fix || echo ---",
-		"js:lint": "eslint \"js/**/*.js\" || echo ---",
-		"js:fix": "eslint \"js/**/*.js\" --fix || echo ---",
 		"php:lint": "composer-runner lint",
 		"php:fix": "composer-runner fix",
 		"php:compat": "composer-runner compat",
-		"lint": "npm run php:lint && npm run js:lint && npm run css:lint",
-		"fix": "npm run php:fix && npm run js:fix && npm run css:fix",
+		"lint": "npm run php:lint",
+		"fix": "npm run php:fix",
 		"copy": "composer dumpautoload -o && grunt copy:all",
 		"build": "composer dumpautoload -o && grunt build",
 		"watch": "composer dumpautoload -o && grunt watch:all"
