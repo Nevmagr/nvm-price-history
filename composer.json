@@ -23,7 +23,7 @@
 	],
 	"require-dev": {
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
-		"squizlabs/php_codesniffer": "^3.0"
+		"squizlabs/php_codesniffer": "^3.11"
 	},
 	"scripts": {
 		"compat": "@php ./prefixed/vendor/squizlabs/php_codesniffer/bin/phpcs",
