@@ -477,13 +477,5 @@
         }
     ],
     "dev": true,
-    "dev-package-names": [
-        "dealerdirect/phpcodesniffer-composer-installer",
-        "phpcompatibility/php-compatibility",
-        "phpcompatibility/phpcompatibility-paragonie",
-        "phpcompatibility/phpcompatibility-wp",
-        "squizlabs/php_codesniffer",
-        "woocommerce/woocommerce-sniffs",
-        "wp-coding-standards/wpcs"
-    ]
+    "dev-package-names": []
 }

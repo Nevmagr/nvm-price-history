@@ -3,7 +3,7 @@
         'name' => 'nvm/price-history',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '2347ff3da2fda7ed80e88ec51cd174924fdecb10',
+        'reference' => 'c04ba99d201a6ad52c78ef9cc75d2e7f333d12b3',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -17,12 +17,12 @@
             'type' => 'composer-plugin',
             'install_path' => __DIR__ . '/../dealerdirect/phpcodesniffer-composer-installer',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'nvm/price-history' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '2347ff3da2fda7ed80e88ec51cd174924fdecb10',
+            'reference' => 'c04ba99d201a6ad52c78ef9cc75d2e7f333d12b3',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -35,7 +35,7 @@
             'type' => 'phpcodesniffer-standard',
             'install_path' => __DIR__ . '/../phpcompatibility/php-compatibility',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'phpcompatibility/phpcompatibility-paragonie' => array(
             'pretty_version' => '1.3.3',
@@ -44,7 +44,7 @@
             'type' => 'phpcodesniffer-standard',
             'install_path' => __DIR__ . '/../phpcompatibility/phpcompatibility-paragonie',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'phpcompatibility/phpcompatibility-wp' => array(
             'pretty_version' => '2.1.5',
@@ -53,7 +53,7 @@
             'type' => 'phpcodesniffer-standard',
             'install_path' => __DIR__ . '/../phpcompatibility/phpcompatibility-wp',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'squizlabs/php_codesniffer' => array(
             'pretty_version' => '3.11.2',
@@ -62,7 +62,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../squizlabs/php_codesniffer',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'woocommerce/woocommerce-sniffs' => array(
             'pretty_version' => '0.1.3',
@@ -71,7 +71,7 @@
             'type' => 'phpcodesniffer-standard',
             'install_path' => __DIR__ . '/../woocommerce/woocommerce-sniffs',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'wp-coding-standards/wpcs' => array(
             'pretty_version' => '2.3.0',
@@ -80,7 +80,7 @@
             'type' => 'phpcodesniffer-standard',
             'install_path' => __DIR__ . '/../wp-coding-standards/wpcs',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
     ),
 );
