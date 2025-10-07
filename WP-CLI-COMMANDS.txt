@@ -1,0 +1,144 @@
+===============================================================================
+  NEVMA PRICE HISTORY FOR WOOCOMMERCE - WP-CLI COMMANDS
+===============================================================================
+
+OVERVIEW
+--------
+This plugin provides WP-CLI commands to manage and process WooCommerce product
+price history. These commands allow you to bulk process products and update
+their price history tracking data.
+
+===============================================================================
+
+MAIN COMMAND
+------------
+
+wp price-history
+
+    Description:
+        Processes all WooCommerce products and updates their price history.
+        This command iterates through all products (including variations) and
+        ensures their price history data is current.
+
+    Usage:
+        wp price-history
+
+    What it does:
+        - Retrieves all WooCommerce products and product variations
+        - Updates the _nvm_price_history meta field for each product
+        - Calculates and updates the 30-day minimum price (_nvm_min_price_30)
+        - Automatically purges price history entries older than 100 days
+        - Displays progress output in the terminal
+
+    When to use:
+        - After plugin installation to initialize price history for existing products
+        - To bulk update price history for all products
+        - After importing products to ensure price tracking is active
+        - For maintenance and data synchronization
+
+===============================================================================
+
+IMPLEMENTATION DETAILS
+----------------------
+
+Class: Nvm\Price_History\WP_CLI
+Location: classes/class-wp-cli.php
+
+The WP-CLI command is automatically registered when:
+1. WP-CLI is available (via cli_init action)
+2. The plugin is active
+
+Registration happens in: nvm-history-price.php
+
+===============================================================================
+
+PRODUCT TYPE HANDLING
+---------------------
+
+Simple Products:
+    - Directly tracks regular_price and sale_price
+    - Stores price history in product meta
+
+Variable Products:
+    - Processes each variation individually
+    - Parent product's minimum price is calculated from in-stock variations
+    - Out-of-stock variations are excluded from parent calculations
+
+===============================================================================
+
+AUTOMATIC PRICE TRACKING
+-------------------------
+
+The plugin also tracks prices automatically (no CLI needed) when:
+    - A product is saved in the admin
+    - Price fields are updated
+    - Product status changes
+
+Hook: save_post_product
+
+===============================================================================
+
+DATA STRUCTURE
+--------------
+
+Price History (_nvm_price_history):
+    Array of entries containing:
+    - regular_price: Base price
+    - sale_price: Active selling price
+    - date: MySQL datetime format
+
+30-Day Minimum (_nvm_min_price_30):
+    Single value containing the lowest price from the last 30 days
+
+Data Retention:
+    - History entries older than 100 days are automatically purged
+    - 30-day minimum is recalculated on each price update
+
+===============================================================================
+
+REQUIREMENTS
+------------
+
+- WordPress with WP-CLI installed
+- WooCommerce active
+- Plugin: Nevma Price History for WooCommerce (active)
+- PHP 7.4 or higher
+
+===============================================================================
+
+EXAMPLES
+--------
+
+Basic usage:
+    $ wp price-history
+
+Check if command is available:
+    $ wp help price-history
+
+Run with WP-CLI debugging:
+    $ wp price-history --debug
+
+===============================================================================
+
+TROUBLESHOOTING
+---------------
+
+Command not found:
+    - Ensure the plugin is active
+    - Verify WP-CLI is installed: wp --version
+    - Check plugin installation in wp-content/plugins/
+
+No output or errors:
+    - Check WooCommerce is active and products exist
+    - Verify PHP error logs for issues
+    - Run with --debug flag for more information
+
+===============================================================================
+
+SUPPORT
+-------
+
+For issues or questions about this plugin, please refer to the plugin
+documentation or contact the development team.
+
+===============================================================================

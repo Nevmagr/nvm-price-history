@@ -36,7 +36,7 @@ class Price_History_CLI {
 		] );
 
 		$total = count( $products );
-		WP_CLI::log( sprintf( 'Processing %d products...', $total ) );
+		\WP_CLI::log( sprintf( 'Processing %d products...', $total ) );
 
 		$woo_price = new Woo_Price();
 		$processed = 0;
@@ -46,13 +46,13 @@ class Price_History_CLI {
 			try {
 				$woo_price->process_product_price_data( $product );
 				$processed++;
-				WP_CLI::log( sprintf( 'Processed: %s (ID: %d)', $product->get_name(), $product->get_id() ) );
+				\WP_CLI::log( sprintf( 'Processed: %s (ID: %d)', $product->get_name(), $product->get_id() ) );
 			} catch ( \Exception $e ) {
 				$errors++;
-				WP_CLI::warning( sprintf( 'Failed to process product ID %d: %s', $product->get_id(), $e->getMessage() ) );
+				\WP_CLI::warning( sprintf( 'Failed to process product ID %d: %s', $product->get_id(), $e->getMessage() ) );
 			}
 		}
 
-		WP_CLI::success( sprintf( 'Processed %d of %d products. Errors: %d', $processed, $total, $errors ) );
+		\WP_CLI::success( sprintf( 'Processed %d of %d products. Errors: %d', $processed, $total, $errors ) );
 	}
 }

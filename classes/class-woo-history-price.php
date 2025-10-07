@@ -112,6 +112,11 @@ class Woo_History_Price extends \WC_Product {
 			$child_min_price[] = $child->get_meta( '_nvm_min_price_30' );
 		}
 
+		// Only process if there are in-stock variations with prices
+		if ( empty( $child_min_price ) ) {
+			return;
+		}
+
 		$min_price = min( $child_min_price );
 
 		$price_history[] = [
