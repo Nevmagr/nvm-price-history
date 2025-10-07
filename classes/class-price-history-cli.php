@@ -1,8 +1,10 @@
 <?php
-
 /**
- * Set namespace.
+ * WP-CLI command for Price History.
+ *
+ * @package Nvm\Price_History
  */
+
 namespace Nvm\Price_History;
 
 use Nvm\Price_History\Woo_History_Price as Woo_Price;
