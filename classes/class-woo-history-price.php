@@ -99,6 +99,8 @@ class Woo_History_Price extends \WC_Product {
 			$price_history = []; // Ensure it's an array
 		}
 
+		$child_min_price = [];
+
 		foreach ( $children as $child_id ) {
 			$child = wc_get_product( $child_id );
 			if ( ! $child || ! $child->is_in_stock() ) {

@@ -174,13 +174,13 @@ class Price_History {
 
 	public function display_price_history_metabox() {
 
-		echo '<h3>' . __( 'Price History', 'nvm-product-price-history-inline' ) . '</h3>';
+		echo '<h3>' . __( 'Price History', 'nevma' ) . '</h3>';
 		global $post;
 		$product = wc_get_product( $post->ID );
 		$price_history = $product->get_meta( '_nvm_price_history' );
 
 		if ( ! is_array( $price_history ) || empty( $price_history ) ) {
-			echo '<p>' . __( 'No price changes recorded.', 'nvm-product-price-history-inline' ) . '</p>';
+			echo '<p>' . __( 'No price changes recorded.', 'nevma' ) . '</p>';
 			return;
 		}
 
