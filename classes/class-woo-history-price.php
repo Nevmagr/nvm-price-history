@@ -36,7 +36,7 @@ class Woo_History_Price extends \WC_Product {
 	 * @param WC_Product $product The WooCommerce product object.
 	 * @return void
 	 */
-	private function process_product_price_data( $product ) {
+	public function process_product_price_data( $product ) {
 		if ( $product->get_type() === 'variable' ) {
 			$this->handle_variable_product( $product );
 		} else {

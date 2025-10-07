@@ -17,53 +17,40 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * WP-CLI commands for managing WooCommerce Price History.
  */
-class Price_History_CLI extends WP_CLI_Command {
+class Price_History_CLI {
 
-    /**
-     * Registers the WP-CLI commands.
-     */
-    public function __construct() {
-        $this->register_commands();
-    }
+	/**
+	 * Process all products and update their price history.
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp price-history process
+	 *
+	 * @when after_wp_load
+	 */
+	public function process() {
+		$products = wc_get_products( [
+			'limit' => -1,
+		] );
 
-    /**
-     * Registers the WP-CLI commands.
-     */
-    private function register_commands() {
-        WP_CLI::add_command( 'price-history', [ $this, 'price_history' ] );
-    }
+		$total = count( $products );
+		WP_CLI::log( sprintf( 'Processing %d products...', $total ) );
 
-    // get all products and update price history
-    public function price_history() {
-        $products = wc_get_products( [
-            'limit' => -1,
-        ] );
+		$woo_price = new Woo_Price();
+		$processed = 0;
+		$errors = 0;
 
-        foreach ( $products as $product ) {
-            $this->process_product_price_data( $product );
-        }
-    }
-
-    /**
-     * Processes the price data for a product and updates relevant metadata.
-     *
-     * @param WC_Product $product The WooCommerce product object.
-     * @return void
-     */
-    private function process_product_price_data( $product ) {
-
-        $min_price = $product->get_meta( '_nvm_min_price_30' );
-
-		if ( ! $min_price ) {
-
-			if ( ! $product instanceof WC_Product ) {
-				return null; // Ensure the input is a valid product.
+		foreach ( $products as $product ) {
+			try {
+				$woo_price->process_product_price_data( $product );
+				$processed++;
+				WP_CLI::log( sprintf( 'Processed: %s (ID: %d)', $product->get_name(), $product->get_id() ) );
+			} catch ( \Exception $e ) {
+				$errors++;
+				WP_CLI::warning( sprintf( 'Failed to process product ID %d: %s', $product->get_id(), $e->getMessage() ) );
 			}
-
-            $woo_price = new Woo_Price();
-			$woo_price->process_product_price_data( $product );
-
-			$min_price = $product->get_meta( '_nvm_min_price_30' );
 		}
-    }
+
+		WP_CLI::success( sprintf( 'Processed %d of %d products. Errors: %d', $processed, $total, $errors ) );
+	}
 }

@@ -91,7 +91,7 @@ class Price_History {
 	public function __construct() {
 
 		// Set the plugin version.
-		self::$plugin_version = '0.0.1';
+		self::$plugin_version = '0.0.2';
 
 		// Set the plugin namespace.
 		self::$namespace_prefix = 'Nvm\\Price_History';
@@ -109,6 +109,18 @@ class Price_History {
 		add_action( 'before_woocommerce_init', array( $this, 'declare_hpos_compatibility' ) );
 		add_action( 'save_post_product', array( $this, 'update_price'), 10, 3 );
 		add_action( 'add_meta_boxes', array( $this, 'price_history_metabox') );
+
+		// Register WP-CLI commands.
+		$this->register_wp_cli_commands();
+	}
+
+	/**
+	 * Registers WP-CLI commands if WP-CLI is available.
+	 */
+	private function register_wp_cli_commands() {
+		if ( defined( 'WP_CLI' ) && WP_CLI ) {
+			\WP_CLI::add_command( 'price-history', 'Nvm\\Price_History\\Price_History_CLI' );
+		}
 	}
 
 	/**
@@ -152,8 +164,8 @@ class Price_History {
 	 */
 	public function update_price( $post_id, $post, $update ){
 
-		$update = new Woo_Price();
-		$update->track_price_changes( $post_id, $post, $update );
+		$woo_price = new Woo_Price();
+		$woo_price->track_price_changes( $post_id, $post, $update );
 
 	}
 
@@ -172,6 +184,11 @@ class Price_History {
 		);
 	}
 
+	/**
+	 * Displays the price history metabox content.
+	 *
+	 * @return void
+	 */
 	public function display_price_history_metabox() {
 
 		echo '<h3>' . __( 'Price History', 'nevma' ) . '</h3>';
@@ -194,6 +211,11 @@ class Price_History {
 		echo '</ul>';
 	}
 
+	/**
+	 * Declares compatibility with WooCommerce High-Performance Order Storage (HPOS).
+	 *
+	 * @return void
+	 */
 	public function declare_hpos_compatibility() {
 
 		if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
@@ -211,7 +233,7 @@ class Price_History {
 		if ( ! class_exists( 'WooCommerce' ) ) {
 			// Display an admin error message and terminate the script.
 			wp_die(
-				esc_html__( 'Sorry, but this plugin requires the WooCommerce plugin to be active.', 'your-text-domain' ) .
+				esc_html__( 'Sorry, but this plugin requires the WooCommerce plugin to be active.', 'nevma' ) .
 				' <a href="' . esc_url( admin_url( 'plugins.php' ) ) . '">' .
 				esc_html__( 'Return to Plugins.', 'nevma' ) . '</a>'
 			);
